@@ -58,11 +58,22 @@ public class ZeroAbstractState {
      * @param another the other state.
      * @return the union of this state with another state.
      */
-    public ZeroAbstractState union(ZeroAbstractState another) {
+  public ZeroAbstractState union(ZeroAbstractState another) {
         ZeroAbstractState newState = new ZeroAbstractState();
         for(String key : this.getDefinedVariables()){
-            ZeroAbstractValue newValue = (this.getValue(key)).merge(another.getValue(key));
+            ZeroAbstractValue newValue;
+            if(another.hasValue(key)){
+                newValue = (this.getValue(key)).merge(another.getValue(key));
+            } else {
+                newValue = this.getValue(key);
+            }
             newState.setValue(key, newValue);
+        }
+        for(String key : another.getDefinedVariables()){
+            if(!this.hasValue(key)){
+                ZeroAbstractValue newValue = another.getValue(key);
+                newState.setValue(key, newValue);
+            }
         }
         return newState;
     }
