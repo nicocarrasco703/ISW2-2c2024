@@ -62,11 +62,8 @@ public class ZeroAbstractState {
         ZeroAbstractState newState = new ZeroAbstractState();
         for(String key : this.getDefinedVariables()){
             ZeroAbstractValue newValue;
-            if(another.hasValue(key)){
-                newValue = (this.getValue(key)).merge(another.getValue(key));
-            } else {
-                newValue = this.getValue(key);
-            }
+            if(another.hasValue(key)) newValue = (this.getValue(key)).merge(another.getValue(key));
+            else newValue = this.getValue(key);
             newState.setValue(key, newValue);
         }
         for(String key : another.getDefinedVariables()){
