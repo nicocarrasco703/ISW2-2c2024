@@ -57,6 +57,10 @@ public class ZeroValueVisitor extends AbstractValueVisitor<ZeroAbstractValue> {
      * @param leftOperand the left operand of the division.
      * @param rightOperand the right operand of the division.
      */
+    /*
+    El metodo visitDivExpresion determina si hubo una posible division por cero revisando los values de los
+    parametros, finalmente asigna a resolvedValue el resultado de realizar la division
+    */
     @Override
     public void visitDivExpression(ZeroAbstractValue leftOperand, ZeroAbstractValue rightOperand) {
         if(rightOperand == ZeroAbstractValue.ZERO || rightOperand == ZeroAbstractValue.MAYBE_ZERO) this.possibleDivisionByZero = true;

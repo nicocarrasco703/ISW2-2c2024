@@ -42,10 +42,48 @@ public enum ZeroAbstractValue {
     }
 
     /**
+     * Returns the result of the division between this ZeroAbstractValue and another.
+     * @param another the other ZeroAbstractValue.
+     * @return the result of the division.
+     */
+
+    /*
+     *  El metodo divideBy realiza la operacion division entre dos valores abstractos, segun el reticulado definido
+     * revisando los casos posibles y devolviendo el posible valor luego de aplicar la operacion
+     * */
+    public ZeroAbstractValue divideBy(ZeroAbstractValue another) {
+        if(another == BOTTOM || another == ZERO){
+            return BOTTOM;
+        }
+        if(another == MAYBE_ZERO){
+            if(this==BOTTOM){
+                return BOTTOM;
+            }
+            return MAYBE_ZERO;
+        }
+        if(another == NOT_ZERO){
+            if(this==ZERO){
+                return ZERO;
+            }
+            if(this==BOTTOM){
+                return BOTTOM;
+            }
+            return MAYBE_ZERO;
+        }
+
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns the result of the addition between this ZeroAbstractValue and another.
      * @param another the other ZeroAbstractValue.
      * @return the result of the addition.
      */
+
+    /*
+     *  El metodo add realiza la operacion suma entre dos valores abstractos, segun el reticulado definido
+     * revisando los casos posibles y devolviendo el posible valor luego de aplicar la operacion
+     * */
     public ZeroAbstractValue add(ZeroAbstractValue another) {
         if(this == BOTTOM){
             return BOTTOM;
@@ -75,38 +113,15 @@ public enum ZeroAbstractValue {
     }
 
     /**
-     * Returns the result of the division between this ZeroAbstractValue and another.
-     * @param another the other ZeroAbstractValue.
-     * @return the result of the division.
-     */
-    public ZeroAbstractValue divideBy(ZeroAbstractValue another) {
-        if(another == BOTTOM || another == ZERO){
-            return BOTTOM;
-        }
-        if(another == MAYBE_ZERO){
-            if(this==BOTTOM){
-                return BOTTOM;
-            }
-            return MAYBE_ZERO;
-        }
-        if(another == NOT_ZERO){
-            if(this==ZERO){
-                return ZERO;
-            }
-            if(this==BOTTOM){
-                return BOTTOM;
-            }
-            return MAYBE_ZERO;
-        }
-
-        throw new UnsupportedOperationException();
-    }
-
-    /**
      * Returns the result of the multiplication between this ZeroAbstractValue and another.
      * @param another the other ZeroAbstractValue.
      * @return the result of the multiplication.
      */
+
+    /*
+     *  El metodo multiplyBy realiza la operacion producto entre dos valores abstractos, segun el reticulado definido
+     * revisando los casos posibles y devolviendo el posible valor luego de aplicar la operacion
+     * */
     public ZeroAbstractValue multiplyBy(ZeroAbstractValue another) {
         if(this == BOTTOM){
             return BOTTOM;
@@ -135,6 +150,10 @@ public enum ZeroAbstractValue {
      * @param another the other ZeroAbstractValue.
      * @return the result of the subtraction.
      */
+    /*
+     *  El metodo subtract realiza la operacion resta entre dos valores abstractos, segun el reticulado definido
+     * revisando los casos posibles y devolviendo el posible valor luego de aplicar la operacion
+     * */
     public ZeroAbstractValue subtract(ZeroAbstractValue another) {
         if(this == BOTTOM){
             return BOTTOM;
@@ -166,6 +185,10 @@ public enum ZeroAbstractValue {
      * @param another the other ZeroAbstractValue.
      * @return the result of the merge.
      */
+    /*
+     * El metodo merge realiza la Union entre dos valores, según el reticulado definido y
+     * el tipo de analisis MAY
+     * */
     public ZeroAbstractValue merge(ZeroAbstractValue another) {
         if(this == BOTTOM){
             return another;

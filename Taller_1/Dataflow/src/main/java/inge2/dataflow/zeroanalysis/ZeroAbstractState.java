@@ -58,6 +58,12 @@ public class ZeroAbstractState {
      * @param another the other state.
      * @return the union of this state with another state.
      */
+
+    /*
+    * Este metodo hace la union entre las claves del estado actual con las del estado pasado por parametro.
+    * Para ello itera en las claves ambos diccionarios, si una clave esta definida en ambos estados usa el
+    * metodo merge para combinarlas y quedarse con ese valor para esa clave.
+    * */
   public ZeroAbstractState union(ZeroAbstractState another) {
         ZeroAbstractState newState = new ZeroAbstractState();
         for(String key : this.getDefinedVariables()){
