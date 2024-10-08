@@ -1,0 +1,5 @@
+{
+  "test_intro.py": true,
+  "test_intro.py::TestIntro::test_check_c_model": true,
+  "tests_parte1.py::TestParte1::test_ej1": true
+}

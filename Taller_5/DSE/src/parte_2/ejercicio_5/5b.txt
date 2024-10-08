@@ -1,0 +1,5 @@
+Ejercicio 5
+b) 
+La cantida total de branchs es 8 (2 por cada if)
+El test suite generado tomaría tanto a c1, c2, c3 como c4 por tru como por false.
+Por lo tanto, el branch coverage será de 8/8, o sea, del 100%.

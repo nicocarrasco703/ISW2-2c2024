@@ -1,0 +1,14 @@
+[
+  "test_intro.py::TestIntro::test_a",
+  "test_intro.py::TestIntro::test_check_c_model",
+  "test_intro.py::TestIntro::test_model_0_c_smt",
+  "test_intro.py::TestIntro::test_model_1_d_smt",
+  "test_intro.py::TestIntro::test_model_2_f_smt",
+  "test_intro.py::TestIntro::test_sat_0_a_smt",
+  "test_intro.py::TestIntro::test_sat_1_b_smt",
+  "test_intro.py::TestIntro::test_sat_2_c_smt",
+  "test_intro.py::TestIntro::test_sat_3_d_smt",
+  "test_intro.py::TestIntro::test_sat_4_e_smt",
+  "test_intro.py::TestIntro::test_sat_5_f_smt",
+  "tests_parte1.py::TestParte1::test_ej1"
+]
