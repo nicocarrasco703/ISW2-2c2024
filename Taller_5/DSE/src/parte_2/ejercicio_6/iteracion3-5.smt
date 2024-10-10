@@ -1,4 +1,4 @@
-;c1_0 and not c2_0 and c1_1 and not c2_1 and not c1_2
+;c1_0 and c2_0
 (declare-const k Int)
 (declare-const c1_0 Bool)
 (declare-const c1_1 Bool)
@@ -15,6 +15,6 @@
 (assert (= c2_1 (= (+ 1 k) 0)))
 (assert (= c2_2 (= (+ 3 k) 0)))
 
-(assert (and c1_0 (and (not c2_0) (and c1_1 (and (not c2_1) (not c1_2))))))
+(assert (and c1_0 c2_0))
 (check-sat)
 (get-model)
