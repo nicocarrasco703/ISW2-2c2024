@@ -1,0 +1,9 @@
+Ejercicio 5
+b) 
+La cantidad total de branches es 8 (2 por cada if)
+El test suite generado tomaría tanto a c1, c2, c3 como c4 por true como por false.
+Por lo tanto, el branch coverage será de 8/8, o sea, del 100%.
+
+Ejercicio 6
+b) La cantidad total de branches es de 32
+El test suite generado toma todas las condiciones de ruta posibles, luego el branch coverage es de 100%.

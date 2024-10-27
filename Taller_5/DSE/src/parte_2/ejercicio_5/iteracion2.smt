@@ -1,3 +1,4 @@
+; (not c1) and (not c2) and (not c3)
 (declare-const a Int)
 (declare-const b Int)
 (declare-const c Int)

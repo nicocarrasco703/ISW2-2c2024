@@ -4,6 +4,6 @@
 (assert (not (or (<= a 0) (or (<= b 0) (<= c 0)))))
 (assert (and (> (+ a b) c) (and (> (+ a c) b) (> (+ b c) a))))
 (assert (not (and (= a b) (= b c))))
-(assert (not (or (= a b) (or (= b c) (= a c)))))
+(assert (or (= a b) (or (= b c) (= a c))))
 (check-sat)
 (get-model)
