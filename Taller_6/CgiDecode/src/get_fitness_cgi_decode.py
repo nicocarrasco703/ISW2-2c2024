@@ -12,7 +12,6 @@ def get_fitness_cgi_decode(test_suite: List[str]) -> float:
     fitness = 0
     clear_maps()
 
-    # TODO: COMPLETAR
     for test in test_suite:
         try:
             cgi_decode_instrumented(test)

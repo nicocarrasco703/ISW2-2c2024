@@ -71,8 +71,8 @@ class TestEvaluateCondition(unittest.TestCase):
 
     def test_evaluate_condition_in_str_dict(self):
         # Probar la operación "In" con un diccionario y un carácter
-        self.assertTrue(evaluate_condition(1, "In", 'a', {ord('a'): 1, ord('b'): 2}))
-        self.assertFalse(evaluate_condition(1, "In", 'c', {ord('a'): 1, ord('b'): 2}))
+        self.assertTrue(evaluate_condition(1, "In", 'a', { 'a': 1,  'b': 2}))
+        self.assertFalse(evaluate_condition(1, "In", 'c', { 'a': 1,  'b': 2}))
 
     def test_evaluate_error_int(self):
         self.assertRaises(ValueError, evaluate_condition, 1, "InvalidOp", 5, 5)
@@ -81,7 +81,7 @@ class TestEvaluateCondition(unittest.TestCase):
         self.assertRaises(ValueError, evaluate_condition, 1, "InvalidOp", 'a', 'b')
 
     def test_evaluate_error_in_str_dict(self):
-        self.assertRaises(ValueError, evaluate_condition, 1, "InvalidOp", 'a', {ord('a'): 1, ord('b'): 2})
+        self.assertRaises(ValueError, evaluate_condition, 1, "InvalidOp", 'a', { 'a': 1,  'b': 2})
 
     def test_evaluate_error(self):
         self.assertRaises(ValueError, evaluate_condition, 1, "InvalidOp", 5, 'a')
