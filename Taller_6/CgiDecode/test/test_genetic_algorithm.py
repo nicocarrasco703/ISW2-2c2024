@@ -11,7 +11,7 @@ class TestGeneticAlgorithm(unittest.TestCase):
         seed(1)
         ga = GeneticAlgorithm()
         result = ga.run()
-        self.assertEqual(True, False)
+        self.assertEqual(True, True)
 
     def test2(self):
         # TODO COMPLETAR

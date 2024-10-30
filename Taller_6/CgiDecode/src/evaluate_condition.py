@@ -138,10 +138,10 @@ def evaluate_condition(condition_num: int, op: str, lhs: Union[str, Dict], rhs: 
                 return False
     if isinstance(lhs, str) and len(lhs) == 1 and isinstance(rhs, dict):
         if op == "In":
-            if ord(lhs) in rhs.keys():
+            if lhs in rhs.keys():
                 update_maps(condition_num, 0, 1)
                 return True
             else:
-                update_maps(condition_num, min(abs(ord(lhs) - k) for k in rhs.keys()), 0)
+                update_maps(condition_num, min(abs(ord(lhs) - ord(k)) for k in rhs.keys()), 0)
                 return False
     raise ValueError()

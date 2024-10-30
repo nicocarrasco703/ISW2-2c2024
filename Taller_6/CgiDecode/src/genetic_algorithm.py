@@ -28,44 +28,60 @@ class GeneticAlgorithm():
         return self.generation
 
     def generate_crossovers(self, population: List[List[str]], fitness_by_individual: dict) -> List[List[str]]:
-        # TODO COMPLETAR
         # Pista: no olvidarse de usar selection, deben crear una nueva poblacion
-        return None
+        p1 = selection(fitness_by_individual, self.tournament_size)
+        p2 = selection(fitness_by_individual, self.tournament_size)
+        if random() < self.p_crossover:
+            c = crossover(p1[0], p2[0])
+            population.append(c[0])
+            population.append(c[1])
+        else:
+            population.append(p1[0])
+            population.append(p2[0])
+        return population
 
     def generate_mutations(self, population: List[List[str]]) -> List[List[str]]:
-        # TODO COMPLETAR
-        return None
+        i = len(population) - 2
+        if random() < self.p_mutation:
+            population[i] = mutate(population[i])
+        if random() < self.p_mutation:
+            population[i+1] = mutate(population[i+1])
+        return population
 
     def covered_all_branches(self, fitness_individual: float) -> bool:
-        # TODO COMPLETAR
-        return False
+        return fitness_individual < 1e-05
 
     def run(self):
         # Generar y evaluar la poblacion inicial
-        population = None # TODO COMPLETAR
-        fitness_by_individual = None # TODO COMPLETAR
+        population = create_population(self.population_size)
+        fitness_by_individual = evaluate_population(population)
 
         # Imprimir el mejor valor de fitness encontrado
-        self.best_individual = None # TODO COMPLETAR
-        self.fitness_best_individual = None # TODO COMPLETAR
+        self.best_individual = min(fitness_by_individual, key = lambda k: fitness_by_individual.get(k))
+        self.fitness_best_individual = min(fitness_by_individual.get(ind) for ind in population)
+        print(self.fitness_best_individual)
 
         # Continuar mientras la cantidad de generaciones es menor que 1000
         # y no haya ningun individuo que cubra todos los objetivos
 
-        while False: # TODO COMPLETAR
+        while self.generation < 1000 and all(not self.covered_all_branches(fitness_by_individual[ind]) for ind in population):
 
-            # Producir una nueva poblacion en base a la anterior.
-            # Usar selection, crossover y mutation.
-            new_population = None # TODO COMPLETAR
+            new_population = []
+            while len(new_population) < self.population_size:
+                # Producir una nueva poblacion en base a la anterior.
+                # Usar selection, crossover y mutation.
+                new_population = self.generate_crossovers(new_population, fitness_by_individual)
+                new_population = self.generate_mutations(new_population)
 
             # Una vez creada, reemplazar la poblacion anterior con la nueva
             self.generation += 1
             population = new_population
 
             # Evaluar la nueva poblacion e imprimir el mejor valor de fitness
-            fitness_by_individual = None # TODO COMPLETAR
-            self.best_individual = None # TODO COMPLETAR
-            self.fitness_best_individual = None # TODO COMPLETAR
+            fitness_by_individual = evaluate_population(population)
+            self.best_individual = min(fitness_by_individual, key=lambda k: fitness_by_individual.get(k))
+            self.fitness_best_individual = min(fitness_by_individual.get(ind) for ind in population)
+            print(self.fitness_best_individual)
 
         # retornar el mejor individuo de la ultima generacion
         return self.best_individual
