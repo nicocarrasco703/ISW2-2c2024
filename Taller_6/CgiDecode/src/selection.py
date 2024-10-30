@@ -7,7 +7,6 @@ def selection(fitness_by_individual: dict, tournament_size: int) -> Tuple[List[s
     fitness_by_individual: Diccionario que contiene a los individuos de la población como keys y su fitness como valores.
     tournament_size: Tamaño del torneo (entero positivo).
     """
-    winner = None
     #  (Tournament selection)
 
     lista_tuplas = list(fitness_by_individual.items())
@@ -15,4 +14,4 @@ def selection(fitness_by_individual: dict, tournament_size: int) -> Tuple[List[s
 
     winner = min(selected, key=lambda x: x[1])[0]
 
-    return winner, fitness_by_individual[winner]
+    return list(winner), fitness_by_individual[winner]

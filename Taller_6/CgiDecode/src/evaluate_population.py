@@ -6,5 +6,5 @@ def evaluate_population(population: List[List[str]]) -> dict:
     fitness = {}
     for ind in population:
         fit = get_fitness_cgi_decode(ind)
-        fitness.update({ind: fit})
+        fitness.update({tuple(ind): fit})
     return fitness

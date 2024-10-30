@@ -1,12 +1,10 @@
 import random
 import string
-from random import choice
-from string import printable
 from typing import List
 
 
 def get_random_character():
-    return random.choice(string.ascii_letters)
+    return random.choice(string.printable)
 
 
 def create_test_case() -> str:

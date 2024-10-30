@@ -36,6 +36,8 @@ def modify_test_case(individual: List[str]) -> List[str]:
         j = choice(range(3))
     elif len(individual[i]) == 1:
         j = choice(range(2))
+    elif len(individual[i]) == 0:
+        j = 0
     else:
         j = choice(range(1,3))
 
